@@ -1,0 +1,182 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap');
+
+/* ============================================
+   CSS CUSTOM PROPERTIES (Design Tokens)
+   ============================================ */
+:root {
+  /* Brand Colors */
+  --brand-primary: #FF5F38;
+  --brand-primary-dark: #e84d27;
+  --brand-primary-light: #ff7a5c;
+  --brand-primary-glow: rgba(255, 95, 56, 0.15);
+  --brand-primary-subtle: rgba(255, 95, 56, 0.08);
+
+  /* Neutral Palette */
+  --surface-bg: #F9FBFC;
+  --surface-card: #ffffff;
+  --surface-card-hover: #fefefe;
+  --surface-overlay: rgba(255, 255, 255, 0.82);
+
+  /* Text */
+  --text-primary: #1a1a2e;
+  --text-secondary: #4a5568;
+  --text-muted: #8896ab;
+  --text-on-brand: #ffffff;
+
+  /* Borders & Dividers */
+  --border-light: rgba(0, 0, 0, 0.07);
+  --border-card: rgba(0, 0, 0, 0.06);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.10), 0 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-brand: 0 8px 24px rgba(255, 95, 56, 0.25);
+  --shadow-brand-lg: 0 12px 32px rgba(255, 95, 56, 0.3);
+
+  /* Border Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ============================================
+   BASE RESET & TYPOGRAPHY
+   ============================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  background-color: var(--surface-bg);
+  color: var(--text-primary);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+p {
+  color: var(--text-secondary);
+}
+
+/* ============================================
+   BOOTSTRAP OVERRIDES - BRAND COLORS
+   ============================================ */
+
+/* Primary buttons → Brand color */
+.btn-primary {
+  background-color: var(--brand-primary) !important;
+  border-color: var(--brand-primary) !important;
+  color: #fff !important;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: var(--brand-primary-dark) !important;
+  border-color: var(--brand-primary-dark) !important;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-brand) !important;
+}
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Outline primary */
+.btn-outline-primary {
+  color: var(--brand-primary) !important;
+  border-color: var(--brand-primary) !important;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+.btn-outline-primary:hover, .btn-outline-primary:focus {
+  background-color: var(--brand-primary) !important;
+  border-color: var(--brand-primary) !important;
+  color: #fff !important;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-brand) !important;
+}
+
+/* Cards */
+.card {
+  border: 1px solid var(--border-card) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-sm) !important;
+  background: var(--surface-card);
+  transition: transform var(--transition-base), box-shadow var(--transition-base) !important;
+  overflow: hidden;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* Badge */
+.badge.bg-primary {
+  background-color: var(--brand-primary) !important;
+}
+.badge.bg-warning {
+  background-color: #FFC107 !important;
+  color: #1a1a2e !important;
+}
+
+/* Form controls */
+.form-control, .form-select {
+  border-radius: var(--radius-sm) !important;
+  border: 1.5px solid var(--border-light) !important;
+  padding: 0.65rem 1rem !important;
+  font-size: 0.92rem !important;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast) !important;
+  background-color: #fff !important;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 0 0 3px var(--brand-primary-glow) !important;
+  outline: none !important;
+}
+
+.form-floating > .form-control {
+  padding: 1rem 1rem 0.5rem !important;
+}
+
+/* Table */
+.table {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+/* ============================================
+   GLOBAL UTILITIES
+   ============================================ */
+.text-brand {
+  color: var(--brand-primary) !important;
+}
+.bg-brand {
+  background-color: var(--brand-primary) !important;
+}
+.border-brand {
+  border-color: var(--brand-primary) !important;
+}

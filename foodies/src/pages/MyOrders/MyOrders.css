@@ -1,0 +1,88 @@
+/* ── My Orders Page ── */
+.my-orders-title {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+/* Orders card */
+.orders-card {
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--border-card) !important;
+  box-shadow: var(--shadow-md) !important;
+  overflow: hidden;
+  /* No hover lift for table containers */
+  transform: none !important;
+}
+.orders-card:hover {
+  transform: none !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* Table tweaks */
+.table {
+  margin-bottom: 0;
+}
+.table > :not(caption) > * > * {
+  padding: 0.85rem 1rem;
+  vertical-align: middle;
+  border-bottom-color: var(--border-light);
+}
+.table thead th {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+  background: var(--surface-bg);
+  border-bottom: 1.5px solid var(--border-light) !important;
+}
+.table td {
+  vertical-align: middle;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+.table tbody tr {
+  transition: background-color var(--transition-fast);
+}
+.table tbody tr:hover {
+  background-color: var(--brand-primary-subtle);
+}
+
+/* Order status dot */
+.order-status-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+}
+.status-preparing { color: #e6a817; }
+.status-paid      { color: #22c55e; }
+.status-delivered { color: var(--brand-primary); }
+
+/* Amount column */
+.order-amount {
+  font-weight: 700;
+  color: var(--brand-primary);
+  font-size: 0.92rem;
+}
+
+/* Refresh button */
+.btn-refresh {
+  background: transparent !important;
+  border: 1.5px solid var(--border-light) !important;
+  border-radius: var(--radius-sm) !important;
+  color: var(--text-muted) !important;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.6rem !important;
+  transition: color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+.btn-refresh:hover {
+  border-color: var(--brand-primary) !important;
+  color: var(--brand-primary) !important;
+  transform: rotate(180deg);
+}

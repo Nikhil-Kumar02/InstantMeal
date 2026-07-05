@@ -1,0 +1,60 @@
+/* ── Contact Section ── */
+.contact-section {
+  background: var(--surface-bg);
+  padding: 4rem 0;
+}
+
+.contact-page-title {
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.contact-page-subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ── Contact Card ── */
+.contact-form {
+  background: var(--surface-card);
+  border-radius: var(--radius-xl) !important;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border-card);
+  padding: 2.5rem !important;
+}
+
+/* Input styling */
+.custom-input {
+  border-radius: var(--radius-sm) !important;
+  padding: 0.75rem 1rem !important;
+  border: 1.5px solid var(--border-light) !important;
+  font-size: 0.9rem;
+  background: var(--surface-bg);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+.custom-input:focus {
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 0 0 3px var(--brand-primary-glow) !important;
+  background: #fff !important;
+  outline: none;
+}
+
+/* ── Info Chips ── */
+.contact-info-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--brand-primary-subtle);
+  border-radius: var(--radius-pill);
+  padding: 0.45rem 1rem;
+  font-size: 0.83rem;
+  color: var(--brand-primary);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.contact-info-chip i {
+  font-size: 0.9rem;
+}

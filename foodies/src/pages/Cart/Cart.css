@@ -1,0 +1,126 @@
+/* ── Cart Page Layout ── */
+.cart-page-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+/* ── Cart Item Row ── */
+.cart-item {
+  padding: 0.75rem 0;
+}
+
+.cart-item img {
+  width: 100%;
+  max-width: 90px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+}
+
+.cart-item h5 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.cart-item .text-muted {
+  font-size: 0.8rem;
+}
+
+.cart-item .fw-bold {
+  color: var(--brand-primary);
+  font-size: 0.95rem;
+}
+
+/* ── Quantity Controls in Cart ── */
+.quantity-input {
+  width: 50px;
+  text-align: center;
+  font-weight: 700;
+  border: 1.5px solid var(--border-light) !important;
+  border-radius: var(--radius-sm) !important;
+  background: #fff;
+  color: var(--text-primary);
+}
+
+.input-group .btn-outline-secondary {
+  border-color: var(--border-light) !important;
+  color: var(--text-secondary) !important;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+.input-group .btn-outline-secondary:hover {
+  background-color: var(--brand-primary) !important;
+  border-color: var(--brand-primary) !important;
+  color: #fff !important;
+}
+
+/* Remove trash button */
+.btn-outline-danger {
+  border-radius: var(--radius-sm) !important;
+  font-size: 0.8rem;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+.btn-outline-danger:hover {
+  transform: scale(1.1);
+}
+
+/* ── Cart Item Divider ── */
+.cart-item hr {
+  margin-top: 0.85rem;
+  height: 1px;
+  background-color: var(--border-light);
+  border: none;
+}
+
+/* ── Order Summary Card ── */
+.cart-summary {
+  background: var(--surface-card);
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid var(--border-card) !important;
+  box-shadow: var(--shadow-md) !important;
+  position: sticky;
+  top: 90px;
+}
+
+.cart-summary .card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.cart-summary .d-flex span:first-child {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+.cart-summary .d-flex span:last-child {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+.cart-summary hr {
+  border-color: var(--border-light);
+}
+.cart-summary strong {
+  color: var(--brand-primary);
+  font-size: 1.05rem;
+}
+
+/* Checkout button in cart */
+.cart-summary .btn-primary {
+  padding: 0.8rem !important;
+  border-radius: var(--radius-sm) !important;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+}
+
+/* Continue Shopping link */
+.btn-outline-primary.rounded {
+  border-radius: var(--radius-pill) !important;
+}

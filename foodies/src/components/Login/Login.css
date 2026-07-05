@@ -1,0 +1,112 @@
+/* ── Auth page backdrop ── */
+.login-container,
+.register-container {
+  position: relative;
+  background-image: url('../../assets/login.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* Dark scrim for legibility */
+.login-container::before,
+.register-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(10, 8, 30, 0.70) 0%, rgba(30, 20, 50, 0.55) 100%);
+  z-index: 0;
+}
+
+.login-container .row,
+.register-container .row {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+/* ── Auth Card ── */
+.login-container .card,
+.register-container .card {
+  border: none !important;
+  border-radius: var(--radius-xl) !important;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.30), 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+  background: rgba(255, 255, 255, 0.97) !important;
+  backdrop-filter: blur(20px);
+  overflow: hidden;
+  transform: none !important; /* override global card hover */
+}
+.login-container .card:hover,
+.register-container .card:hover {
+  transform: none !important;
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.30), 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+}
+
+/* Card body */
+.login-container .card-body,
+.register-container .card-body {
+  padding: 2.5rem !important;
+}
+
+/* Title */
+.login-container .card-title,
+.register-container .card-title {
+  font-size: 1.5rem !important;
+  font-weight: 800 !important;
+  color: var(--text-primary) !important;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.75rem !important;
+}
+
+/* Form inputs */
+.login-container .form-control,
+.register-container .form-control {
+  border-radius: var(--radius-sm) !important;
+  border: 1.5px solid var(--border-light) !important;
+  background: var(--surface-bg) !important;
+}
+.login-container .form-control:focus,
+.register-container .form-control:focus {
+  background: #fff !important;
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 0 0 3px var(--brand-primary-glow) !important;
+}
+
+/* Submit button */
+.login-container .btn-login,
+.register-container .btn-login {
+  background: var(--brand-primary) !important;
+  border-color: var(--brand-primary) !important;
+  color: #fff !important;
+  border-radius: var(--radius-sm) !important;
+  font-weight: 700 !important;
+  padding: 0.7rem !important;
+  letter-spacing: 0.03em;
+  transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast) !important;
+}
+.login-container .btn-login:hover,
+.register-container .btn-login:hover {
+  background: var(--brand-primary-dark) !important;
+  border-color: var(--brand-primary-dark) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--shadow-brand) !important;
+}
+
+/* Sign up / in link */
+.login-container a,
+.register-container a {
+  color: var(--brand-primary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+.login-container a:hover,
+.register-container a:hover {
+  color: var(--brand-primary-dark);
+  text-decoration: underline;
+}

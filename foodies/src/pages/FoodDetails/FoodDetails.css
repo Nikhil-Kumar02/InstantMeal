@@ -1,0 +1,76 @@
+/* ── FoodDetails Page ── */
+.food-details-section {
+  background: var(--surface-bg);
+  padding: 3rem 0 5rem;
+}
+
+/* Image */
+.food-details-section .food-image {
+  width: 100%;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition-slow);
+}
+.food-details-section .food-image:hover {
+  transform: scale(1.02);
+}
+
+/* Category badge */
+.food-details-section .badge {
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.45rem 0.9rem;
+  border-radius: var(--radius-pill);
+  letter-spacing: 0.03em;
+}
+.food-details-section .text-bg-warning {
+  background-color: #FFC107 !important;
+  color: #1a1a2e !important;
+}
+
+/* Name */
+.food-details-section .food-name {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--text-primary);
+  margin: 0.5rem 0;
+}
+
+/* Price */
+.food-details-section .food-price {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+}
+
+/* Description */
+.food-details-section .food-description {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-top: 0.75rem;
+}
+
+/* Add to Cart button */
+.food-details-section .btn-add-to-cart {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--brand-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 0.75rem 1.75rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: var(--shadow-brand);
+  transition: background var(--transition-fast), transform var(--transition-base), box-shadow var(--transition-base);
+}
+.food-details-section .btn-add-to-cart:hover {
+  background: var(--brand-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-brand-lg);
+}

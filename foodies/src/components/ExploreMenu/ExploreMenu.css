@@ -1,0 +1,96 @@
+/* ── Section Title ── */
+.explore-menu h1 {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: 0.25rem;
+}
+
+.explore-menu > p {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+}
+
+/* ── Scroll Icons ── */
+.scroll-icon {
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-left: 10px;
+  color: var(--text-muted);
+  transition: color var(--transition-fast), transform var(--transition-fast);
+}
+.scroll-icon:hover {
+  color: var(--brand-primary);
+  transform: scale(1.15);
+}
+
+/* ── Category Scroll Container ── */
+.explore-menu-list {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  padding: 0.5rem 0 1rem;
+  scrollbar-width: none;
+}
+.explore-menu-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Each Category Item ── */
+.explore-menu-list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform var(--transition-base);
+}
+.explore-menu-list-item:hover {
+  transform: translateY(-4px);
+}
+
+/* Category image */
+.explore-menu-list-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid transparent;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+}
+.explore-menu-list-item img:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* Active category image */
+.explore-menu-list-item img.active {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 4px var(--brand-primary-glow), var(--shadow-md);
+  transform: scale(1.06);
+}
+
+/* Category label */
+.explore-menu-list-item p {
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 600;
+  margin-top: 0.45rem;
+  transition: color var(--transition-fast);
+  letter-spacing: 0.01em;
+}
+.explore-menu-list-item:hover p,
+.explore-menu-list-item img.active + p {
+  color: var(--brand-primary);
+}
+
+/* ── Divider ── */
+.explore-menu hr {
+  margin: 0.5rem 0 1.25rem;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--brand-primary-glow), transparent);
+  border: none;
+}

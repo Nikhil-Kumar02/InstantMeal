@@ -1,0 +1,86 @@
+/* ── Hero Section ── */
+.header {
+  position: relative;
+  padding: 5rem 2rem;
+  margin-bottom: 1rem;
+  margin-top: 0.25rem;
+  border-radius: var(--radius-xl);
+  background-image: url("../../assets/header.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+}
+
+/* Gradient overlay for readability */
+.header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(15, 10, 30, 0.65) 0%,
+    rgba(30, 20, 50, 0.45) 50%,
+    rgba(255, 95, 56, 0.12) 100%
+  );
+  border-radius: inherit;
+  z-index: 0;
+}
+
+.header .container-fluid {
+  position: relative;
+  z-index: 1;
+}
+
+.header h1 {
+  color: #ffffff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+}
+
+.header p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-bottom: 1.75rem;
+  max-width: 520px;
+}
+
+/* Glowing animated CTA button */
+.header .explore-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--brand-primary);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  text-decoration: none;
+  box-shadow: 0 8px 28px rgba(255, 95, 56, 0.45);
+  transition: background var(--transition-fast), transform var(--transition-base), box-shadow var(--transition-base);
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+.header .explore-button:hover {
+  background: var(--brand-primary-dark);
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 12px 36px rgba(255, 95, 56, 0.55);
+  color: #fff;
+}
+.header .explore-button:active {
+  transform: translateY(0) scale(1);
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 8px 28px rgba(255, 95, 56, 0.45); }
+  50%       { box-shadow: 0 8px 36px rgba(255, 95, 56, 0.65); }
+}
