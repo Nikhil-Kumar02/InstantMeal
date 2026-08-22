@@ -1,0 +1,665 @@
+/* =========================================================
+   ADMIN NAVBAR
+========================================================= */
+
+.admin-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+
+  height: 70px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #eef2f7;
+
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+
+  padding: 0 !important;
+}
+
+.admin-navbar-container {
+  height: 100%;
+
+  padding-left: 20px;
+  padding-right: 24px;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+========================================================= */
+
+.admin-navbar-left {
+  display: flex;
+  align-items: center;
+
+  gap: 16px;
+}
+
+
+/* =========================================================
+   SIDEBAR TOGGLE
+========================================================= */
+
+.admin-sidebar-toggle {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #475569;
+
+  font-size: 21px;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.admin-sidebar-toggle:hover {
+  background: #f8fafc;
+
+  border-color: #dbe2ea;
+
+  color: #ff6b35;
+
+  transform: translateY(-1px);
+}
+
+.admin-sidebar-toggle:focus {
+  outline: none;
+
+  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.12);
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.admin-navbar-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  cursor: pointer;
+
+  user-select: none;
+}
+
+.admin-brand-icon {
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background: #ff6b35;
+
+  color: #ffffff;
+
+  font-size: 18px;
+
+  box-shadow: 0 4px 10px rgba(255, 107, 53, 0.18);
+}
+
+.admin-brand-content {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 1.1;
+}
+
+.admin-brand-name {
+  font-size: 17px;
+
+  font-weight: 800;
+
+  color: #1e293b;
+
+  letter-spacing: -0.2px;
+}
+
+.admin-brand-label {
+  margin-top: 3px;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+
+  color: #ff6b35;
+}
+
+
+/* =========================================================
+   RIGHT SIDE
+========================================================= */
+
+.admin-navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+
+/* =========================================================
+   AVATAR BUTTON
+========================================================= */
+
+.admin-avatar-button {
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 4px 5px 4px 5px;
+
+  border: none !important;
+
+  outline: none !important;
+
+  background: transparent !important;
+
+  box-shadow: none !important;
+
+  cursor: pointer;
+
+  border-radius: 12px;
+
+  transition: background-color 0.2s ease;
+}
+
+.admin-avatar-button:hover {
+  background: #f8fafc !important;
+}
+
+.admin-avatar-button:focus {
+  background: #f8fafc !important;
+}
+
+
+/* =========================================================
+   AVATAR
+========================================================= */
+
+.admin-avatar-circle {
+  width: 42px;
+  height: 42px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ff6b35;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+
+  box-shadow:
+    0 3px 8px rgba(255, 107, 53, 0.22);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-avatar-button:hover .admin-avatar-circle {
+  transform: scale(1.04);
+
+  box-shadow:
+    0 5px 12px rgba(255, 107, 53, 0.28);
+}
+
+
+/* =========================================================
+   PROFILE INFO
+========================================================= */
+
+.admin-profile-info {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  line-height: 1.15;
+}
+
+.admin-profile-name {
+  max-width: 150px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  color: #334155;
+}
+
+.admin-profile-role {
+  margin-top: 3px;
+
+  font-size: 11px;
+
+  font-weight: 500;
+
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   DROPDOWN ARROW
+========================================================= */
+
+.admin-dropdown-arrow {
+  margin-left: 2px;
+
+  color: #94a3b8;
+
+  font-size: 11px;
+
+  transition: transform 0.2s ease;
+}
+
+.admin-avatar-button[aria-expanded="true"] .admin-dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+
+/* =========================================================
+   DROPDOWN
+========================================================= */
+
+.admin-dropdown {
+  width: 310px !important;
+
+  margin-top: 10px !important;
+
+  padding: 6px 0 !important;
+
+  border: 1px solid #eef2f7 !important;
+
+  border-radius: 14px !important;
+
+  background: #ffffff !important;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 8px 20px rgba(15, 23, 42, 0.08),
+    0 20px 45px rgba(15, 23, 42, 0.08) !important;
+
+  animation: adminDropdownAnimation 0.16s ease-out;
+}
+
+@keyframes adminDropdownAnimation {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   DROPDOWN HEADER
+========================================================= */
+
+.admin-dropdown-header {
+  padding: 16px;
+
+  background: #ffffff;
+}
+
+.admin-dropdown-profile {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.admin-dropdown-avatar {
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ff6b35;
+
+  color: #ffffff;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+}
+
+.admin-dropdown-user-info {
+  min-width: 0;
+}
+
+.admin-name {
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  color: #1e293b;
+}
+
+.admin-email {
+  max-width: 215px;
+
+  margin-top: 3px;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  font-size: 12px;
+
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   ROLE BADGE
+========================================================= */
+
+.admin-role-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 12px;
+
+  padding: 5px 9px;
+
+  border-radius: 20px;
+
+  background: #fff4ef;
+
+  color: #ff6b35;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.2px;
+}
+
+.admin-role-badge i {
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   DROPDOWN ITEMS
+========================================================= */
+
+.admin-dropdown-item {
+  width: 100%;
+
+  display: flex !important;
+
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 11px 16px !important;
+
+  border: none;
+
+  background: #ffffff !important;
+
+  color: #475569 !important;
+
+  text-align: left;
+
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.admin-dropdown-item:hover {
+  background: #f8fafc !important;
+
+  color: #1e293b !important;
+}
+
+.admin-dropdown-item:focus {
+  background: #f8fafc !important;
+
+  color: #1e293b !important;
+
+  outline: none;
+}
+
+
+/* =========================================================
+   DROPDOWN ICON
+========================================================= */
+
+.admin-dropdown-icon {
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 9px;
+
+  background: #f8fafc;
+
+  color: #64748b;
+
+  font-size: 16px;
+
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.admin-dropdown-item:hover .admin-dropdown-icon {
+  background: #fff1eb;
+
+  color: #ff6b35;
+}
+
+
+/* =========================================================
+   ITEM TEXT
+========================================================= */
+
+.admin-item-title {
+  display: block;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #334155;
+}
+
+.admin-item-description {
+  display: block;
+
+  margin-top: 2px;
+
+  font-size: 10px;
+
+  color: #94a3b8;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.admin-dropdown-divider {
+  height: 1px;
+
+  margin: 5px 16px !important;
+
+  border: none;
+
+  background: #eef2f7;
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+.admin-logout-item {
+  margin-bottom: 4px;
+}
+
+.admin-logout-item .admin-dropdown-icon {
+  background: #fff5f5;
+
+  color: #ef4444;
+}
+
+.admin-logout-item:hover {
+  background: #fff7f7 !important;
+}
+
+.admin-logout-item:hover .admin-dropdown-icon {
+  background: #fee2e2;
+
+  color: #dc2626;
+}
+
+.admin-logout-item .admin-item-title {
+  color: #ef4444;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .admin-navbar {
+    height: 62px;
+  }
+
+  .admin-navbar-container {
+    padding-left: 12px;
+
+    padding-right: 12px;
+  }
+
+  .admin-navbar-left {
+    gap: 10px;
+  }
+
+  .admin-sidebar-toggle {
+    width: 38px;
+    height: 38px;
+
+    font-size: 19px;
+  }
+
+  .admin-brand-icon {
+    width: 34px;
+    height: 34px;
+
+    font-size: 16px;
+  }
+
+  .admin-brand-name {
+    font-size: 15px;
+  }
+
+  .admin-brand-label {
+    display: none;
+  }
+
+  .admin-profile-info {
+    display: none;
+  }
+
+  .admin-avatar-circle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .admin-dropdown {
+    width: 290px !important;
+
+    margin-right: 2px;
+  }
+}
+
+@media (max-width: 400px) {
+
+  .admin-brand-content {
+    display: none;
+  }
+
+  .admin-dropdown {
+    width: calc(100vw - 24px) !important;
+
+    max-width: 310px;
+  }
+}
