@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface FoodService {
 
-//    String uploadFile(MultipartFile file);
+    String uploadFile(MultipartFile file);
 
     FoodResponse addFood(FoodRequest request);
 
@@ -16,13 +16,13 @@ public interface FoodService {
 
     FoodResponse getFood(String id);
 
-//    boolean deleteFile(String filename);
-//    void deleteFood(String id);
+    boolean deleteFile(String filename);
 
     FoodResponse updateFood (String id, FoodRequest request);
 
     boolean deleteFood(String id);
 
     long countFoods();
-//    FoodResponse addFood(FoodRequest request, MultipartFile file);
+
+    FoodResponse addFood(FoodRequest request, MultipartFile file);
 }

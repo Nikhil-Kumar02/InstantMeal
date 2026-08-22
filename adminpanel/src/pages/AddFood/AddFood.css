@@ -1,32 +1,87 @@
-.contact-form {
-    max-width: 500px;
-    margin: 0 auto;
+/* ── Add Food Tabs ── */
+.add-food-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0;
 }
 
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+.add-food-tab {
+  flex: 1;
+  padding: 0.55rem 1rem;
+  border: 1.5px solid #dee2e6;
+  background: #fff;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Poppins', sans-serif;
 }
 
-.contact-form textarea {
-    height: 150px;
+.add-food-tab.active {
+  border-color: #FF5F38;
+  background: rgba(255, 95, 56, 0.06);
+  color: #FF5F38;
 }
 
-.contact-form button {
-    background-color: #007bff;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.add-food-tab:hover:not(.active) {
+  border-color: #adb5bd;
+  color: #495057;
 }
 
-.contact-form button:hover {
-    background-color: #21a208;
+/* ── Drop Zone ── */
+.drop-zone {
+  border: 2px dashed #dee2e6;
+  border-radius: 12px;
+  padding: 2rem 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #fafafa;
+  min-height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drop-zone:hover,
+.drop-zone.drag-over {
+  border-color: #FF5F38;
+  background: rgba(255, 95, 56, 0.04);
+}
+
+.drop-zone.has-file {
+  border-color: #198754;
+  background: rgba(25, 135, 84, 0.04);
+}
+
+.drop-zone-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  color: #6c757d;
+}
+
+.drop-icon {
+  font-size: 2.2rem;
+  color: #adb5bd;
+}
+
+.drop-zone-preview {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  padding: 0 0.5rem;
+}
+
+.drop-preview-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #dee2e6;
+  flex-shrink: 0;
 }
