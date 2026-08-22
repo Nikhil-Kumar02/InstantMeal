@@ -12,6 +12,7 @@ import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import MyOrders from "./pages/MyOrders/MyOrders";
 import { StoreContext } from "./context/StoreContext";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   const {token} = useContext(StoreContext);
@@ -29,6 +30,7 @@ function App() {
         <Route path="/cart" element={<Cart />} />
         <Route path="/order" element={token ? <PlaceOrder /> : <Login />} />
         <Route path="/myorders" element={token ? <MyOrders /> : <Login />} />
+        <Route path="/profile" element={token ? <Profile /> : <Login />} />
 
         <Route path="/login" element={token ? <Home /> : <Login />} />
         <Route path="/register" element={token ? <Home /> : <Register />} />
