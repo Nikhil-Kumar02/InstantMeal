@@ -1,5 +1,6 @@
 package com.instantmeal.foodiesApi.service;
 
+import com.instantmeal.foodiesApi.io.UserProfileUpdateRequest;
 import com.instantmeal.foodiesApi.io.UserRequest;
 import com.instantmeal.foodiesApi.io.UserResponse;
 
@@ -9,4 +10,6 @@ public interface UserService {
     String findByUserId();
 
     UserResponse getProfile();
+
+    UserResponse updateProfile(UserProfileUpdateRequest request);
 }
