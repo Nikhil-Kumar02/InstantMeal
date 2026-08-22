@@ -33,7 +33,7 @@ public class SecurityConfig {
     private final AppUserDetailsService userDetailsService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    @Value("${cors.allowed.origins:http://localhost:3000,http://localhost:3001}")
+    @Value("${cors.allowed.origins:http://localhost:3000,http://localhost:3001,http://localhost:8080}")
     private List<String> allowedOrigins;
 
     @Bean
@@ -42,13 +42,31 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/register", "/api/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/foods/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/foods/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/api/foods/**").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/api/foods/**").hasRole("ADMIN")
-                        .requestMatchers("/api/orders/all", "/api/orders/status/**").hasRole("ADMIN")
-                        .anyRequest().authenticated())
+
+                        // Public APIs
+                        .requestMatchers(
+                                "/api/register",
+                                "/api/login",
+                                "/api/foods/**"
+                        ).permitAll()
+
+                        // Admin-only APIs
+                        .requestMatchers(
+                                "/api/orders/all",
+                                "/api/orders/status/**"
+                        ).hasRole("ADMIN")
+
+                        // Everything else requires authentication
+                        .anyRequest().authenticated()
+                )
+//                .authorizeHttpRequests(auth -> auth
+//                        .requestMatchers("/api/register", "/api/login").permitAll()
+//                        .requestMatchers(HttpMethod.GET, "/api/foods/**").permitAll()
+//                        .requestMatchers(HttpMethod.POST, "/api/foods/**").hasRole("ADMIN")
+//                        .requestMatchers(HttpMethod.PUT, "/api/foods/**").hasRole("ADMIN")
+//                        .requestMatchers(HttpMethod.DELETE, "/api/foods/**").hasRole("ADMIN")
+//                        .requestMatchers("/api/orders/all", "/api/orders/status/**").hasRole("ADMIN")
+//                        .anyRequest().authenticated())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
