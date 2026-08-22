@@ -95,3 +95,38 @@ body {
 .dropdown-menu li {
   cursor: pointer;
 }
+
+/* User avatar initials */
+.user-avatar-button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.user-avatar-button::after {
+  margin-left: 0.35rem;
+}
+
+.user-avatar-initials {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand-primary);
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  box-shadow: var(--shadow-brand);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.user-avatar-button:hover .user-avatar-initials {
+  transform: translateY(-1px) scale(1.04);
+  box-shadow: var(--shadow-brand-lg);
+}

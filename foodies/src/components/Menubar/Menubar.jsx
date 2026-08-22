@@ -5,17 +5,25 @@ import {Link} from "react-router-dom"
 import { assets } from '../../assets/assets.js'
 import { StoreContext } from '../../context/StoreContext.jsx'
 
+function getInitials(name = '') {
+    const parts = name.trim().split(/\s+/).filter(Boolean);
+    if (parts.length === 0) return 'U';
+    if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
+    return `${parts[0].charAt(0)}${parts[parts.length - 1].charAt(0)}`.toUpperCase();
+}
+
 function Menubar() {
     const [active, setActive] = useState('home');
 
     const navigate = useNavigate();
 
-    const {quantities, token, setToken, setQuantities, user} = useContext(StoreContext);
+    const {quantities, token, setToken, setQuantities, user, setUser} = useContext(StoreContext);
     const uniqueItemsInCart = Object.values(quantities).filter(qty => qty > 0).length;
 
     const logout = () => {
         localStorage.removeItem('token');
         setToken("");
+        setUser(null);
         setQuantities({});
         navigate('/login');
     }
@@ -55,19 +63,27 @@ function Menubar() {
                                 <button className='btn btn-outline-success btn-sm' onClick={() => navigate('/register')}>Register</button>
                             </>
                         ) : (
-                            <>
-                                <div className='dropdown text-end'>
-                                    <a href="" className='d-block link-body-emphasis text-decoration-none dropdown-toggle' data-bs-toggle="dropdown" aria-expanded="false">
-                                        <img src={assets.user} alt="" height={30} width={35} className='rounded-circle' />
-                                    </a>
-                                    <ul className='dropdown-menu text-small'>
-                                        <li className='dropdown-item fw-semibold text-brand border-bottom pb-2'>{user ? user.name : "Customer"}</li>
-                                        <li className='dropdown-item' style={{cursor: 'pointer'}} onClick={() => navigate('/profile')}>Profile</li>
-                                        <li className='dropdown-item' style={{cursor: 'pointer'}} onClick={() => navigate('/myorders')}>Orders</li>
-                                        <li className='dropdown-item' style={{cursor: 'pointer'}} onClick={logout}>Logout</li>
-                                    </ul>
-                                </div>
-                            </>
+                            <div className='dropdown text-end'>
+                                <button
+                                    type='button'
+                                    className='user-avatar-button dropdown-toggle'
+                                    data-bs-toggle='dropdown'
+                                    aria-expanded='false'
+                                    aria-label='Open account menu'
+                                >
+                                    <span className='user-avatar-initials'>
+                                        {getInitials(user?.name)}
+                                    </span>
+                                </button>
+                                <ul className='dropdown-menu dropdown-menu-end text-small'>
+                                    <li className='dropdown-item fw-semibold text-brand border-bottom pb-2'>
+                                        {user ? user.name : "Customer"}
+                                    </li>
+                                    <li className='dropdown-item' onClick={() => navigate('/profile')}>Profile</li>
+                                    <li className='dropdown-item' onClick={() => navigate('/myorders')}>Orders</li>
+                                    <li className='dropdown-item' onClick={logout}>Logout</li>
+                                </ul>
+                            </div>
                         )
                     }
                 </div>
