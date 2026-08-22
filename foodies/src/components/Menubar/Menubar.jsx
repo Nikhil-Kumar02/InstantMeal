@@ -10,13 +10,13 @@ function Menubar() {
 
     const navigate = useNavigate();
 
-    const {quantities, token, setToken, setQuantities} = useContext(StoreContext);
+    const {quantities, token, setToken, setQuantities, user} = useContext(StoreContext);
     const uniqueItemsInCart = Object.values(quantities).filter(qty => qty > 0).length;
 
     const logout = () => {
         localStorage.removeItem('token');
         setToken("");
-        setQuantities({})
+        setQuantities({});
         navigate('/login');
     }
 
@@ -61,9 +61,10 @@ function Menubar() {
                                         <img src={assets.user} alt="" height={30} width={35} className='rounded-circle' />
                                     </a>
                                     <ul className='dropdown-menu text-small'>
-                                        <li className='dropdown-item'>{}</li>
-                                        <li className='dropdown-item' onClick={() => navigate('/myorders')}>Orders</li>
-                                        <li className='dropdown-item' onClick={logout}>Logout</li>
+                                        <li className='dropdown-item fw-semibold text-brand border-bottom pb-2'>{user ? user.name : "Customer"}</li>
+                                        <li className='dropdown-item' style={{cursor: 'pointer'}} onClick={() => navigate('/profile')}>Profile</li>
+                                        <li className='dropdown-item' style={{cursor: 'pointer'}} onClick={() => navigate('/myorders')}>Orders</li>
+                                        <li className='dropdown-item' style={{cursor: 'pointer'}} onClick={logout}>Logout</li>
                                     </ul>
                                 </div>
                             </>

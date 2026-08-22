@@ -1,26 +1,59 @@
 package com.instantmeal.foodiesApi.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.instantmeal.foodiesApi.io.FoodRequest;
 import com.instantmeal.foodiesApi.io.FoodResponse;
 import com.instantmeal.foodiesApi.service.FoodService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/foods")
 @AllArgsConstructor
-@CrossOrigin("*")
 public class FoodController {
 
     private final FoodService foodService;
 
-    @PostMapping
-    public FoodResponse addFood(@RequestBody FoodRequest request) {
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    public FoodResponse addFood(@RequestBody @Valid FoodRequest request) {
         return foodService.addFood(request);
+    }
+
+    @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public FoodResponse addFoodWithUpload(
+            @RequestPart("food") String foodString,
+            @RequestPart(value = "file", required = false) MultipartFile file) {
+        
+        ObjectMapper objectMapper = new ObjectMapper();
+        FoodRequest request;
+        try {
+            request = objectMapper.readValue(foodString, FoodRequest.class);
+        } catch (Exception ex) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid JSON format for food data.");
+        }
+
+        // Validate the deserialized object
+        if (request.getName() == null || request.getName().trim().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Food name is required");
+        }
+        if (request.getDescription() == null || request.getDescription().trim().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Food description is required");
+        }
+        if (request.getPrice() <= 0) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Price must be greater than zero");
+        }
+        if (request.getCategory() == null || request.getCategory().trim().isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Category is required");
+        }
+
+        return foodService.addFood(request, file);
     }
 
     @GetMapping
@@ -34,7 +67,7 @@ public class FoodController {
     }
 
     @PutMapping("/{id}")
-    public FoodResponse updateFood(@PathVariable String id, @RequestBody FoodRequest request) {
+    public FoodResponse updateFood(@PathVariable String id, @RequestBody @Valid FoodRequest request) {
         return foodService.updateFood(id, request);
     }
 
@@ -43,29 +76,4 @@ public class FoodController {
     public boolean deleteFood(@PathVariable String id) {
         return foodService.deleteFood(id);
     }
-
-//    @GetMapping("/count")
-//    public long count() {
-//        return foodService.countFoods();
-//    }
-//
-//    @GetMapping("/db")
-//    public String db(MongoTemplate mongoTemplate) {
-//        return mongoTemplate.getDb().getName();
-//    }
-
-//    @PostMapping
-//    public FoodResponse addFood(@RequestPart("food") String foodString, @RequestPart("file") MultipartFile file) {
-//        ObjectMapper objectMapper = new ObjectMapper();
-//        FoodRequest request = null;
-//
-//        try {
-//            request = objectMapper.readValue(foodString, FoodRequest.class);
-//        } catch (Exception ex) {
-//            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Invalid JSON format....");
-//        }
-//
-//        FoodResponse response = foodService.addFood(request, file);
-//        return response;
-//    }
 }

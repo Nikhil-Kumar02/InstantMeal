@@ -17,8 +17,10 @@ import java.util.function.Function;
 
 @Component
 public class JwtUtil {
-    @Value("${jwt.secret.key}")
+    @Value("${jwt.secret.key:}")
     private String SECRET_KEY;
+
+    private SecretKey transientKey;
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
@@ -48,9 +50,27 @@ public class JwtUtil {
         return claimsResolver.apply(claims);
     }
 
-    private SecretKey getKey() {
-        byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
-        return Keys.hmacShaKeyFor(keyBytes);
+    private synchronized SecretKey getKey() {
+        if (SECRET_KEY != null && !SECRET_KEY.trim().isEmpty()) {
+            try {
+                byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY.trim());
+                return Keys.hmacShaKeyFor(keyBytes);
+            } catch (Exception e) {
+                System.err.println("WARNING: Failed to decode configured Base64 jwt.secret.key. Falling back to transient in-memory key.");
+            }
+        }
+        if (transientKey == null) {
+            System.err.println("==========================================================================");
+            System.err.println("WARNING: jwt.secret.key is not configured or invalid in application.properties!");
+            System.err.println("Generating a transient secure key for this session.");
+            System.err.println("NOTE: All active sessions/JWT tokens will become invalid when the server restarts.");
+            System.err.println("Run 'com.instantmeal.foodiesApi.util.KeyGenerator' to generate a permanent key.");
+            System.err.println("==========================================================================");
+            byte[] keyBytes = new byte[32];
+            new java.security.SecureRandom().nextBytes(keyBytes);
+            transientKey = Keys.hmacShaKeyFor(keyBytes);
+        }
+        return transientKey;
     }
 
     private Claims extractAllClaims(String token) {

@@ -1,24 +1,29 @@
 import { createContext, useEffect, useState } from "react";
 import { fetchFoodList } from "../components/service/foodService";
-import axios from "axios";
 import { addToCart, removeQtyFromCart, getCartData } from "../components/service/cartService";
+import { getProfile } from "../components/service/authService";
 
 export const StoreContext = createContext(null);
 
 export const StoreContextProvider = (props) => {
 
     const [foodList, setFoodList] = useState([]);
-    const[quantities, setQuantities] = useState({});
+    const [quantities, setQuantities] = useState({});
     const [token, setToken] = useState(() => localStorage.getItem("token") || "");
+    const [user, setUser] = useState(null);
 
     const increaseQty = async (foodId) => {
-        setQuantities((prev) => ({...prev, [foodId]: (prev[foodId] || 0)+1}));
-        await addToCart(foodId, token);
+        setQuantities((prev) => ({...prev, [foodId]: (prev[foodId] || 0) + 1}));
+        if (token) {
+            await addToCart(foodId);
+        }
     }
           
     const decreaseQty = async (foodId) => {
-        setQuantities((prev) => ({...prev, [foodId]: prev[foodId]  > 0 ? prev[foodId]-1 : 0}));
-        await removeQtyFromCart(foodId, token);
+        setQuantities((prev) => ({...prev, [foodId]: prev[foodId] > 0 ? prev[foodId] - 1 : 0}));
+        if (token) {
+            await removeQtyFromCart(foodId);
+        }
     }
 
     const removeFromCart = (foodId) => {
@@ -26,12 +31,22 @@ export const StoreContextProvider = (props) => {
             const updatedQuantities = {...prevQuantities};
             delete updatedQuantities[foodId];
             return updatedQuantities;
-        })
+        });
     }
 
-    const loadCartData = async (token) => {
-        const items = await getCartData(token);
+    const loadCartData = async () => {
+        const items = await getCartData();
         setQuantities(items);
+    }
+
+    const loadUserData = async () => {
+        try {
+            const profile = await getProfile();
+            setUser(profile);
+        } catch (error) {
+            console.error("Failed to fetch user profile", error);
+            setUser(null);
+        }
     }
 
     const contextValue = {
@@ -43,7 +58,10 @@ export const StoreContextProvider = (props) => {
         removeFromCart,
         loadCartData,
         token,
-        setToken
+        setToken,
+        user,
+        setUser,
+        loadUserData
     };
 
     useEffect(() => {
@@ -51,20 +69,12 @@ export const StoreContextProvider = (props) => {
             const data = await fetchFoodList();
             setFoodList(data);
 
-            if (localStorage.getItem("token")) {
-                setToken(localStorage.getItem("token"));
-                await loadCartData(localStorage.getItem("token"));
+            if (token) {
+                await loadUserData();
+                await loadCartData();
             }
         }
         loadData();
-    }, [])
-
-    useEffect(() => {
-        if (token) {
-            loadCartData(token);
-        } else {
-            setQuantities({}); // clear cart on logout
-        }
     }, [token]);
 
     return (

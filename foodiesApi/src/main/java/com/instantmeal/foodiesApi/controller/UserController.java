@@ -16,7 +16,12 @@ public class UserController {
 
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public UserResponse register(@RequestBody UserRequest request) {
+    public UserResponse register(@RequestBody @jakarta.validation.Valid UserRequest request) {
         return userService.registerUser(request);
+    }
+
+    @GetMapping("/users/me")
+    public UserResponse getProfile() {
+        return userService.getProfile();
     }
 }
