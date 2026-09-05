@@ -1,19 +1,19 @@
-# Build*Stage
-FROM maven:3.9.9-eclipse-tem*rin-21 AS build
+# Build Stage
+FROM maven:3.9.9-eclipse-temurin-21 AS build
 
 WORKDIR /app
 
-COP* . .
+COPY . .
 
-RUN mvn clean package -Dskip*ests
+RUN mvn clean package -DskipTests
 
 # Runtime Stage
-FROM eclipse*temurin:21-jre
+FROM eclipse-temurin:21-jre
 
-WORKDIR /applicati*n
+WORKDIR /application
 
-COPY --from=build /app/target/**jar application.jar
+COPY --from=build /app/target/*.jar application.jar
 
 EXPOSE 8080
 
-*NTRYPOINT ["java", "-jar", "applic*tion.jar"]
+ENTRYPOINT ["java", "-jar", "application.jar"]
