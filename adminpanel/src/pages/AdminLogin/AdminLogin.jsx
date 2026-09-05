@@ -20,7 +20,7 @@ function AdminLogin() {
         setLoading(true);
         try {
             const response = await axios.post(`${API_BASE}/login`, data);
-            const { token, email } = response.data;
+            const { token } = response.data;
 
             // Verify the user has ADMIN role
             const profileRes = await axios.get(`${API_BASE}/users/me`, {

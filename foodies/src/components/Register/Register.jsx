@@ -4,7 +4,6 @@ import "../Login/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 
 import {toast} from "react-toastify"
-import axios from "axios";
 import { registerUser } from "../service/authService";
 
 function Register() {

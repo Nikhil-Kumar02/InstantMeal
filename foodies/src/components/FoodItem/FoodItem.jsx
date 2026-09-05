@@ -15,7 +15,7 @@ function FoodItem({ idx, food }) {
           <img
             src={food.imageUrl}
             className="card-img-top"
-            alt="Product Image"
+            alt={food.imageUrl}
             style={{
               width: "100%", // always fills card width
               height: "250px", // consistent height across all cards

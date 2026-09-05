@@ -11,7 +11,7 @@ const API_BASE =
 function Profile() {
   const navigate = useNavigate();
 
-  const {user, setUser, setToken} = useContext(StoreContext);
+  const {user, setUser} = useContext(StoreContext);
 
   const [formData, setFormData] = useState({
     name: "",

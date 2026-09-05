@@ -32,7 +32,7 @@ function Menubar() {
     <>
         <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top shadow-sm">
             <div className="container">
-                <Link className="navbar-brand" to={'/'}><img src={assets.logo} className='mx-4' height={48} width={48} /></Link>
+                <Link className="navbar-brand" to={'/'}><img src={assets.logo} alt={assets.logo} className='mx-4' height={48} width={48} /></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
