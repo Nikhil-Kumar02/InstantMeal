@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -23,11 +23,7 @@ function Profile() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
-  useEffect(() => {
-    loadProfile();
-  }, []);
-
-  const loadProfile = async () => {
+  const loadProfile = useCallback(async () => {
     const token = localStorage.getItem("token");
 
     if (!token) {
@@ -55,10 +51,9 @@ function Profile() {
     } catch (error) {
       console.error("Unable to load profile:", error);
 
-      if (error.response?.status === 401 || error.response?.status === 403) {
+      if ( error.response?.status === 401 ||error.response?.status === 403) {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
-
         navigate("/login");
         return;
       }
@@ -67,7 +62,11 @@ function Profile() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [navigate, setUser]);
+
+  useEffect(() => {
+    loadProfile();
+  }, [loadProfile]);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
