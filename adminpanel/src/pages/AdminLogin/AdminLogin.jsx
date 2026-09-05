@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "./AdminLogin.css";
 
-const API_BASE = process.env.REACT_APP_API_BASE_URL;
+const API_BASE = process.env.REACT_APP_URL;
 
 function AdminLogin() {
     const [data, setData] = useState({ email: "", password: "" });
