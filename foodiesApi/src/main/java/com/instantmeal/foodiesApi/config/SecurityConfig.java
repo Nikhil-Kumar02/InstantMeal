@@ -33,7 +33,7 @@ public class SecurityConfig {
     private final AppUserDetailsService userDetailsService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    @Value("${cors.allowed.origins:http://localhost:3000,http://localhost:3001,http://localhost:8080}")
+    @Value("${cors.allowed.origins:https://instant-meal-admin.vercel.app,https://instant-meal-customer.vercel.app,http://localhost:8080}")
     private List<String> allowedOrigins;
 
     @Bean
