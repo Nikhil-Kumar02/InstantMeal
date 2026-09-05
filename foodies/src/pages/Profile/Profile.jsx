@@ -5,8 +5,7 @@ import { toast } from "react-toastify";
 import { StoreContext } from "../../context/StoreContext";
 import "./Profile.css";
 
-const API_BASE =
-  process.env.REACT_APP_URL;
+const API_BASE = process.env.REACT_APP_URL;
 
 function Profile() {
   const navigate = useNavigate();
@@ -32,7 +31,7 @@ function Profile() {
     }
 
     try {
-      const response = await axios.get(`${API_BASE}/users/me`, {
+      const response = await axios.get(`${API_BASE}/api/users/me`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -124,7 +123,7 @@ function Profile() {
       const token = localStorage.getItem("token");
 
       const response = await axios.put(
-        `${API_BASE}/users/me`,
+        `${API_BASE}/api/users/me`,
         {
           name: formData.name.trim(),
           email: formData.email.trim().toLowerCase(),
