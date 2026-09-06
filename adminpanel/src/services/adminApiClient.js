@@ -3,7 +3,7 @@ import axios from "axios";
 const API_BASE_URL = process.env.REACT_APP_URL;
 
 const adminApiClient = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: `${API_BASE_URL}/api`,
 });
 
 adminApiClient.interceptors.request.use(
