@@ -1,6 +1,6 @@
 import adminApiClient from "../services/adminApiClient";
 
-const API_PATH = "/foods";
+const API_PATH = "/api/foods";
 
 export const addFood = async (foodData) => {
   const response = await adminApiClient.post(API_PATH, foodData);

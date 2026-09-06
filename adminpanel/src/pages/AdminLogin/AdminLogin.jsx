@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "./AdminLogin.css";
 
-const API_BASE = process.env.REACT_APP_URL;
+const API_BASE = process.env.REACT_APP_URL + "/api";
 
 function AdminLogin() {
     const [data, setData] = useState({ email: "", password: "" });
@@ -14,6 +14,8 @@ function AdminLogin() {
     const handleChange = (e) => {
         setData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
+
+    console.log("API_BASE =", process.env.REACT_APP_URL);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
